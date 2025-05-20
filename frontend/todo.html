@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Task Manager</h1>
+            <div class="user-info">
+                <span id="user-name">User</span>
+                <button id="logout-btn" class="btn-small">Logout</button>
+            </div>
+        </header>
+        
+        <div class="todo-container">
+            <div class="add-task">
+                <h2>Add New Task</h2>
+                <form id="task-form">
+                    <div class="form-group">
+                        <label for="task-name">Task Name</label>
+                        <input type="text" id="task-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description">Description</label>
+                        <textarea id="task-description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-priority">Priority</label>
+                        <select id="task-priority">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Add Task</button>
+                </form>
+            </div>
+            
+            <div class="tasks-list">
+                <h2>Your Tasks</h2>
+                <div id="tasks-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loading-indicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+    
+    <script src="todo.js"></script>
+</body>
+</html>
