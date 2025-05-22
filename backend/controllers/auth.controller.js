@@ -13,6 +13,8 @@ const generateToken = (id) => {
 // @route   POST /api/auth/register
 // @access  Public
 const registerUser = async (req, res, next) => {
+  console.log('POST /api/auth/register');
+
   try {
     const { name, email, password } = req.body
 
@@ -58,6 +60,8 @@ const registerUser = async (req, res, next) => {
 // @route   POST /api/auth/login
 // @access  Public
 const loginUser = async (req, res, next) => {
+  console.log('POST /api/auth/login');
+
   try {
     const { email, password } = req.body
 
@@ -96,6 +100,8 @@ const loginUser = async (req, res, next) => {
 // @route   GET /api/auth/profile
 // @access  Private
 const getUserProfile = async (req, res, next) => {
+  console.log('POST /api/auth/profile');
+
   try {
     res.json(req.user)
   } catch (error) {
