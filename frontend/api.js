@@ -1,5 +1,5 @@
 // API Service for communicating with the backend
-const API_URL = `http://${window.env.BACKEND_LB_DNS}:3000/api`
+const API_URL = `http://${window.env.BACKEND_DNS}:3000/api`
 
 // Helper function to handle API responses
 async function handleResponse(response) {
