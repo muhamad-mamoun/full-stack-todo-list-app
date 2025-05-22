@@ -7,13 +7,19 @@ const db = require("./config/database")
 const app = express()
 const PORT = process.env.PORT || 3000
 
-// Add route for health checks
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
+// Enhanced CORS configuration
+const corsOptions = {
+  origin: true, // or specify your frontend domains ['http://localhost:3001', 'https://yourdomain.com']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200 // For legacy browser support
+}
 
 // Middleware
-app.use(cors())
+app.use(cors(corsOptions))
+app.options('*', cors(corsOptions)) // Explicit OPTIONS handler for all routes
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -31,7 +37,7 @@ db.getConnection()
 app.use("/api/auth", require("./routes/auth.routes"))
 app.use("/api/tasks", require("./routes/task.routes"))
 
-// Health check route
+// Add route for health checks
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Server is running" })
 })
@@ -40,13 +46,12 @@ app.get("/health", (req, res) => {
 app.use(errorHandler)
 
 // Start server
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {
   console.log("Unhandled Rejection:", err)
-  // Close server & exit process
-  process.exit(1)
+  server.close(() => process.exit(1))
 })
