@@ -7,6 +7,11 @@ const db = require("./config/database")
 const app = express()
 const PORT = process.env.PORT || 3000
 
+// Add route for health checks
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Middleware
 app.use(cors())
 app.use(express.json())
