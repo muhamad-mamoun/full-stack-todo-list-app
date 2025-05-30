@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Auth Section -->
+        <div id="auth-section" class="auth-section">
+            <h1>Todo App</h1>
+            
+            <div class="auth-forms">
+                <!-- Login Form -->
+                <div id="login-form" class="form-container active">
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <input type="text" id="loginUsername" placeholder="Username" required>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="form-container">
+                    <h2>Register</h2>
+                    <form id="registerForm">
+                        <input type="text" id="registerUsername" placeholder="Username" required>
+                        <input type="password" id="registerPassword" placeholder="Password" required>
+                        <button type="submit">Register</button>
+                    </form>
+                    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo Section -->
+        <div id="todo-section" class="todo-section hidden">
+            <header class="header">
+                <h1>My Todos</h1>
+                <div class="user-info">
+                    <span id="username-display"></span>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </header>
+
+            <!-- Add Todo Form -->
+            <div class="add-todo">
+                <form id="todoForm">
+                    <input type="text" id="todoTitle" placeholder="Todo title" required>
+                    <input type="text" id="todoDescription" placeholder="Description (optional)">
+                    <button type="submit">Add Todo</button>
+                </form>
+            </div>
+
+            <!-- Todos List -->
+            <div class="todos-container">
+                <div id="todosList" class="todos-list">
+                    <!-- Todos will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message" class="message hidden"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
